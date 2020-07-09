@@ -107,7 +107,7 @@ export default class Carousel extends Component {
     )
 
     return (
-      <div>
+      <header>
         <Slider {...settings}>
           {_blocks}
         </Slider>
@@ -126,7 +126,7 @@ export default class Carousel extends Component {
             style = {{ width: '100%', height: '100%'}}
           />
         </Modal>
-      </div>
+      </header>
     );
   }
 }

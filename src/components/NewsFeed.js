@@ -59,7 +59,7 @@ export default class NewsFeed extends Component {
     );
 
     return (
-      <div>
+      <main>
         <NewsHeader
           { ...this.state }
           searchText = { this.searchText }
@@ -73,7 +73,7 @@ export default class NewsFeed extends Component {
             searchWords = {this.state.searchWords}
           />
         )}
-      </div>
+      </main>
     );
   }
 }

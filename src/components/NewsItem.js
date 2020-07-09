@@ -6,7 +6,7 @@ import arrImg from '../utils/getImages';
 
 export default function NewsItem(props) {
   return (
-    <div>
+    <article>
       <Row>
         <Col
           xs={24} sm={7} md={6} lg={6} xl={4} xxl={3}
@@ -47,6 +47,6 @@ export default function NewsItem(props) {
         </Col>
       </Row>
       <Divider />
-    </div>
+    </article>
   );
 }
