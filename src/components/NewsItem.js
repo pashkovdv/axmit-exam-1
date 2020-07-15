@@ -5,6 +5,8 @@ import Highlighter from 'react-highlight-words';
 import arrImg from '../utils/getImages';
 
 export default function NewsItem(props) {
+
+
   return (
     <article>
       <Row>
@@ -13,7 +15,7 @@ export default function NewsItem(props) {
         >
           <img
             alt =''
-            src = { arrImg[props.img] }
+            src = { arrImg.filter( val => val.id === props.img )[0].url }
             style = {{ objectFit: 'cover', width: '100%', maxHeight: '100%', marginBottom: '16px' }}
           />
           
@@ -33,7 +35,7 @@ export default function NewsItem(props) {
           <p style = {{ fontWeight: '500', fontSize: '16px' }} >
             { new Date(+props.date).toLocaleString() }
             <span style = {{ marginLeft: '8px' }} >
-              { props.tags.map( v => <Tag key={v}>{v}</Tag> )}
+              { props.tags.map( val => <Tag key={val}>{val}</Tag> )}
             </span>
           </p>
           <p>

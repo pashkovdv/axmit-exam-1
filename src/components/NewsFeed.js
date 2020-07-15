@@ -37,26 +37,27 @@ export default class NewsFeed extends Component {
 
   render() {
 
-    const _arrNewsProcessed = (
-      arrNews
-      .filter( v => !this.state.filter || v.tags.find( v => v === this.state.filter )) // фильтруем по выбранной категории
-      .filter( v =>
-        !this.state.searchWords[0] || this.state.searchWords.find( word => // если задана строка
-          ( v.title + ' ' + v.caption ).toLowerCase().includes( word.toLowerCase() ) // фильтруем по словам строки
-        )
+    let arrNewsProcessed = arrNews.filter( val => !this.state.filter || val.tags.find( val => val === this.state.filter )) // фильтруем по выбранной категории
+    
+    arrNewsProcessed = arrNewsProcessed.filter( val => { // фильтруем по словам строки
+      if ( !this.state.searchWords[0] ) return true;
+      let stringForSearch = ( val.title + ' ' + val.caption ).toLowerCase();
+      return this.state.searchWords.find( word => 
+        stringForSearch.includes( word.toLowerCase() )
       )
-      .sort( (a, b) => {
-        if ( this.state.order === 'date' ) return +a.date - +b.date; // сортируем по юникс-времени
-        // сортируем по латинскому алфавиту
-        if (a.title > b.title) {
-          return 1;
-        }
-        if (a.title < b.title) {
-          return -1;
-        }
-        return 0;
-      })
-    );
+    });
+    
+    arrNewsProcessed = arrNewsProcessed.sort( (a, b) => {
+      if ( this.state.order === 'date' ) return +a.date - +b.date; // сортируем по юникс-времени
+      // сортируем по латинскому алфавиту
+      if (a.title > b.title) {
+        return 1;
+      }
+      if (a.title < b.title) {
+        return -1;
+      }
+      return 0;
+    });
 
     return (
       <main>
@@ -66,10 +67,10 @@ export default class NewsFeed extends Component {
           onFilterChange = { this.onFilterChange }
           onOrderChange = { this.onOrderChange }
         />
-        { _arrNewsProcessed.map( (v,i) => 
+        { arrNewsProcessed.map( val => 
           <NewsItem
-            key = {i}
-            { ...v }
+            key = { val.id }
+            { ...val }
             searchWords = {this.state.searchWords}
           />
         )}

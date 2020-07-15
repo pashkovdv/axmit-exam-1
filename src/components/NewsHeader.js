@@ -39,7 +39,7 @@ export default function NewsItem(props) {
               onChange = {props.onFilterChange}
               allowClear
             >
-              { arrTags.map( (v,i) => <Option key = {i} value = {v} >{v}</Option> ) } {/* набор опций составляем из тегов новостей */}
+              { arrTags.map( val => <Option key = {val} value = {val} >{val}</Option> ) } {/* набор опций составляем из тегов новостей */}
             </Select>
           </Form.Item>
         </Col>

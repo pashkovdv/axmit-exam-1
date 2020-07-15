@@ -15,3 +15,13 @@
   font-size: 40px;
   color: gray;
 }
+
+.img-container {
+  overflow: 'hidden';
+  height: 200px;
+}
+
+.img-carousel {
+  object-fit: cover;
+  height: 200px;
+}
