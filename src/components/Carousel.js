@@ -91,7 +91,7 @@ export default class Carousel extends Component {
         style = {{ width: IMG_WIDTH+'px' }}
       >
         <img
-          alt = '' // т.к. ругаются валидаторы
+          alt = {val.id}
           src = {val.url}
           className = 'img-carousel'
           style = {{ width: IMG_WIDTH+'px' }}
